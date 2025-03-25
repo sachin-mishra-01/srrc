@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+*{
+margin: 0%;
+}
+.App{
+  width: 100vw;
+  
+ 
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.nav{
+  width: 100vw;
+ 
+  background-color: rgb(163, 163, 177);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.con{
+  width: 80%;
+  height:   100%;
+ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 19px;
+
+}
+
+.card{
+  width: 100%;
+  height: 100%;
+ 
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-top: 19px;
+  margin-bottom: 19px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+ align-items: center;
+ justify-content: space-around;
+ 
+}
+
+img{
+  width: 95%;
+ height: 50%;
+ border-radius: 15px;
+}
+
+.t{
+  font-size: large;
+  font-weight: 900;
+  color: green;
+}
+
+
+.cardbox{
+  width: 30%;
+  height: 400px;
+}
+
+.cardbox  :hover{
+  transition: 1s;
+  transform: scale(1.05);
+
+}
+
+ .card :hover{
+ 
+ transform: scale(1);
+
+}
+.btn{
+  width: 80%;
+ 
+  display: flex;
+  flex-wrap: wrap;
+ justify-content: space-around;
+}
+
+h3{
+  text-decoration: none;
+  color: black;
+}
+.active{
+ color: azure;
+ text-decoration: none;
+
+}
+
+.carddd{
+  text-align: center;
+  width: 50vw;
+ height: 60vh;
+
+ margin: auto;
+
+}
+
+
+.buycart{
+  width: 100vw;
+  height: 90vh;
+
+  display:  flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+ 
+  margin-top: 20px;
+}
+
+.cnav{
+  width: 100%;
+  height: 10%;
+  background-color: brown;
+  display:  flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+ 
+}
+.cbdy{
+  width: 100%;
+  height: 90%;
+  overflow-y:auto;
+  display:  flex;
+  flex-wrap: wrap;
+ 
+ 
+  gap: 15px;
+}
+
+
+.cardboxx{
+width: 30%;
+border: 2px solid black;
+display: flex;
+flex-direction: column;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+justify-content: space-around;
+margin-bottom: 10px;
+}
+
+
+.hack{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
