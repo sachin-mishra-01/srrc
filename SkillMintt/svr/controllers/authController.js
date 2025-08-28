@@ -29,12 +29,13 @@ export const signup = async (req, res) => {
     // Send JWT
   const tkn = gentkn(user._id , user.username);
 
-    res.cookie("tkn", tkn, {
+   res.cookie("tkn", tkn, {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production", // allow cookies locally
-  sameSite: "strict",
-  maxAge: 24 * 60 * 60 * 1000
+  secure: true,        // must be true in production (Vercel uses HTTPS)
+  sameSite: "none",    // allow cross-site cookies
+  maxAge: 24 * 60 * 60 * 1000,
 });
+
 
     res.status(201).json({
       message: "Account created successfully",
@@ -69,11 +70,12 @@ export const login = async (req, res) => {
   
 
   res.cookie("tkn", tkn, {
-   httpOnly: true,
-   secure: process.env.NODE_ENV === "production", // allow cookies locally
-   sameSite: "strict",
-   maxAge: 24 * 60 * 60 * 1000
-  });
+  httpOnly: true,
+  secure: true,        // must be true in production (Vercel uses HTTPS)
+  sameSite: "none",    // allow cross-site cookies
+  maxAge: 24 * 60 * 60 * 1000,
+});
+
     
   
     // Create JWT token
