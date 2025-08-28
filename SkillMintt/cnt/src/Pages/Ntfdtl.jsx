@@ -10,7 +10,7 @@ function Ntfdtl() {
   useEffect(() => {
     const fetchNtfDetail = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/find/exnsdtl", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/find/exnsdtl`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -30,7 +30,7 @@ function Ntfdtl() {
 
   const handleAccept = async () => {
     try {
-       const res = await fetch("http://localhost:5000/api/payment/ac", {
+       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/ac`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -52,7 +52,7 @@ function Ntfdtl() {
 
   const handleReject = async () => {
     try {
-       const res = await fetch("http://localhost:5000/api/payment/rj", {
+       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/rj`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

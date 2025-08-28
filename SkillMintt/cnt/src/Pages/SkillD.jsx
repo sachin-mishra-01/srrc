@@ -24,7 +24,7 @@ export default function SkillD() {
 
     const fetchSkill = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/find/skill", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/find/skill`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -118,7 +118,7 @@ export default function SkillD() {
     if (!selectedMySkill) return alert("Select a skill to exchange.");
 
     try {
-      const res = await fetch("http://localhost:5000/api/payment/exchange", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/exchange`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

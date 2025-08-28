@@ -33,7 +33,7 @@ function SkillPage() {
 
     try {
       setUploading(true); // start uploading
-      const res = await fetch("http://localhost:5000/api/upload/skill", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/skill`, {
         method: "POST",
         credentials: "include",
         body: formData,

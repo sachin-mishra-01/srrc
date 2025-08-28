@@ -46,7 +46,7 @@ export default function Profile() {
               className="bg-red-600 text-white px-3 py-1 text-sm rounded-md"
               onClick={async () => {
                 try {
-                  await fetch("http://localhost:5000/api/auth/logout", {
+                  await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
                     method: "POST",
                     credentials: "include",
                   });

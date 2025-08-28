@@ -14,7 +14,7 @@ function CourseDetail() {
   useEffect(() => {
     const fetchCourseDetail = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/find/crsdtl", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/find/crsdtl`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -34,7 +34,7 @@ function CourseDetail() {
 
   const submitRating = async (rating) => {
     try {
-      const res = await fetch("http://localhost:5000/api/upload/rt", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/rt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

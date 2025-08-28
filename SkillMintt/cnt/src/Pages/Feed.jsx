@@ -20,7 +20,7 @@ export default function Feed() {
   useEffect(() => {
     const fetchFeed = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/find/feed");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/find/feed`);
         const data = await res.json();
         
         setSkills(data.skills || []);
@@ -45,7 +45,7 @@ export default function Feed() {
       minRating: minRating || 0 // default to 1 if empty
     };
 
-    const res = await fetch("http://localhost:5000/api/find/sch", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/find/sch`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -39,7 +39,7 @@ export default function EditProfile() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/upload/profile", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/profile`, {
         method: "POST",
         body: formData,
         credentials: "include",
@@ -60,7 +60,7 @@ export default function EditProfile() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/upload/chpwd", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/chpwd`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@ export default function EditProfile() {
   const handleClearPhoto = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/upload/chprofile", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/chprofile`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -104,7 +104,7 @@ export default function EditProfile() {
   const handleUserInfoSubmit = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/upload/update", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/update`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

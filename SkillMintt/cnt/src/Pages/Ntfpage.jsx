@@ -11,7 +11,7 @@ function Notifications() {
   useEffect(() => {
     const fetchNtfs = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/find/exns`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/find/exns`, {
           method: "GET",
           credentials: "include",
         });

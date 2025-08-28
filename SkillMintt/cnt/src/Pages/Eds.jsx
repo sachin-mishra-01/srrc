@@ -34,7 +34,7 @@ const handleThumbnailChange = async () => {
 
   try {
     setLoading(true);
-    const res = await fetch("http://localhost:5000/api/upload/thbn", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/thbn`, {
       method: "POST",
       body: formData,
       credentials: "include",
@@ -68,7 +68,7 @@ const handleContentChange = async () => {
 
   try {
     setLoading(true);
-    const res = await fetch("http://localhost:5000/api/upload/skf", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/skf`, {
       method: "POST",
       body: formData,
       credentials: "include",
@@ -101,7 +101,7 @@ const handleContentChange = async () => {
         return;
       }
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/upload/upsk", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/upsk`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -140,7 +140,7 @@ const handleContentChange = async () => {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/upload/dlt", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/dlt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
