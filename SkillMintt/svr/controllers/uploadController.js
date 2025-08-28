@@ -164,7 +164,7 @@ export const Skillset = async (req, res) => {
       : "pdf";
 
     const fileUrl = req.file.path;
-    const thumbnail = resourceType === "image" ? fileUrl : "";
+     const thumbnail =  "https://images.pexels.com/photos/6985001/pexels-photo-6985001.jpeg?cs=srgb&dl=pexels-codioful-6985001.jpg&fm=jpg";
 
     const skill = await Skill.create({
       user: user._id,
