@@ -167,13 +167,13 @@ function SkillPage() {
           className="border rounded-lg p-4 shadow hover:shadow-lg transition bg-zinc-800"
         >
           {/* Skill Media or Fallback Thumbnail */}
-          <div className="mb-3">
-            {skill?.media && skill.media.length > 0 ? (
+         <div className="mb-3 w-full  flex items-center justify-center">
+            {skill?.media  ? (
               <img
-                src={skill.media[0].url}
-                alt={skill.name}
-                className="w-full h-48 object-cover rounded-lg"
-              />
+              src={skill.thumbnail}
+              alt="Thumbnail"
+              className="w-full h-full object-cover rounded-xl shadow-lg mb-6"
+            />
             ) : (
               <div className="w-full h-48 flex items-center justify-center bg-indigo-600 rounded-lg text-white font-bold text-lg">
                 {skill.name}
