@@ -35,10 +35,11 @@
     "yargs-parser": "^21.1.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd svr && npm start",
-    "client": "cd cnt && npm start"
-  },
+  "start": "node index.js",       
+  "server": "cd svr && npm start",
+  "client": "cd cnt && npm start",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+},
   "keywords": [],
   "author": "",
   "license": "ISC"
