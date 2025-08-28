@@ -28,7 +28,7 @@ function Crac() {
 
    
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -96,7 +96,7 @@ function Login() {
        
         
        try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -177,7 +177,7 @@ function Fp() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/auth/rotp", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/rotp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ login }),
@@ -209,7 +209,7 @@ function Fp() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/auth/votp", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/votp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",   // ✅ FIX: cookie will now be saved
