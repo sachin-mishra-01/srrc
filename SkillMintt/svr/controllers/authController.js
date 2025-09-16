@@ -172,9 +172,10 @@ export const vOtp = async (req, res) => {
 
     res.cookie("tkn", tkn, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 24 * 60 * 60 * 1000
+       secure: true,        // must be true in production (Vercel uses HTTPS)
+       sameSite: "none",    // allow cross-site cookies
+       maxAge: 24 * 60 * 60 * 1000,
+     
     });
 
     res.json({ success: true, username: user.username });
