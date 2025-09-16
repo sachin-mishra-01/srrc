@@ -31,8 +31,8 @@ export const signup = async (req, res) => {
 
    res.cookie("tkn", tkn, {
   httpOnly: true,
-  secure: true,        // must be true in production (Vercel uses HTTPS)
-  sameSite: "none",    // allow cross-site cookies
+  secure: true,        
+  sameSite: "none",    
   maxAge: 24 * 60 * 60 * 1000,
 });
 
