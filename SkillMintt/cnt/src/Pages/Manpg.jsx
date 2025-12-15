@@ -160,4 +160,4 @@ function Mnpg() {
   )
 }
 
-export default Mnpg
+export default Mnpg;
