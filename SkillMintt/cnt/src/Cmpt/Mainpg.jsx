@@ -7,6 +7,7 @@ function Crac() {
   const { setun } = useData();
   const [formData, setFormData] = useState({fname: "",uname: "",email: "",password: "",cpassword: "", otp:""});
   const [otp,setotp] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const hndchng = (e) => {
     setFormData(prev => ({
@@ -17,7 +18,8 @@ function Crac() {
   
   const handleSubmit = async(e) => {
     e.preventDefault();
-
+    if (loading) return;
+    
     if (formData.password !== formData.cpassword) {
       alert("Passwords do not match");
       return;
@@ -28,6 +30,7 @@ function Crac() {
 
    
     try {
+      setLoading(true);
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
         method: "POST",
         headers: {
@@ -56,6 +59,8 @@ function Crac() {
     } catch (err) {
       console.error(err);
       alert("Error connecting to server");
+    }finally {
+      setLoading(false); 
     }
 
   
@@ -70,7 +75,7 @@ function Crac() {
        <label className="flex  justify-between w-full "> Password :  <input className="text-black "  type="password" name="password" placeholder="Password" value={formData.password} onChange={hndchng} required /> </label> 
        <label className="flex  justify-between w-full "> Confirm Password : <input className="text-black "  type="password" name="cpassword" placeholder="confirm Password" value={formData.cpassword} onChange={hndchng} required /> </label> 
        
-         <button type="submit" className={` w-[70%] bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white  rounded-lg shadow-lg hover:opacity-90 transition-all `} value="submit"> Sign In </button>
+         <button type="submit" disabled={loading} className={` w-[70%] bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white  rounded-lg shadow-lg hover:opacity-90 transition-all ${loading ? "opacity-60 cursor-not-allowed" : "hover:opacity-90"} `} value="submit"> {loading ? "Please wait..." : "Sign In"} </button>
 
         
          </form>
@@ -86,6 +91,7 @@ function Login() {
    const [otp,setotp] = useState(false);
     const [login , setlogin] = useState('');
     const [password,setpassword] = useState('');
+   const [loading, setLoading] = useState(false);
      const navigate = useNavigate();
 
 
@@ -93,9 +99,10 @@ function Login() {
 
     const hsubmt = async(e) => {
         e.preventDefault();
-       
+       if (loading) return;
         
        try {
+          setLoading(true);
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -116,6 +123,8 @@ function Login() {
     } catch (err) {
       console.error(err);
       alert("Error connecting to server");
+    }finally {
+      setLoading(false); 
     }
   
     }
@@ -130,7 +139,7 @@ function Login() {
 
         
         
-           <button type="submit" className={`  w-[70%] bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white  rounded-lg shadow-lg hover:opacity-90 transition-all `} value="submit"> Log In </button>
+           <button type="submit" disabled={loading} className={`  w-[70%] bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white  rounded-lg shadow-lg hover:opacity-90 transition-all ${loading ? "opacity-60 cursor-not-allowed" : "hover:opacity-90"}`} value="submit"> {loading ? "Please wait..." : "Log In"} </button>
             
           
          </form>
@@ -143,15 +152,15 @@ function Login() {
 }
 
 function Fp() {
-  const { setun } = useData();   // ✅ fix: you forgot this
-  const navigate = useNavigate(); // ✅ fix: you forgot this
+  const { setun } = useData();   
+  const navigate = useNavigate(); 
 
-  const [login, setLogin] = useState("");        // username/email
-  const [otp, setOtp] = useState("");            // entered otp
-  const [showOtp, setShowOtp] = useState(false); // show otp input after send
-  const [timeLeft, setTimeLeft] = useState(0);   // countdown in seconds
+  const [login, setLogin] = useState("");        
+  const [otp, setOtp] = useState("");            
+  const [showOtp, setShowOtp] = useState(false); 
+  const [timeLeft, setTimeLeft] = useState(0);   
   const [loading, setLoading] = useState(false);
-
+  
   // Timer effect
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -212,7 +221,7 @@ function Fp() {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/votp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",   // ✅ FIX: cookie will now be saved
+        credentials: "include",   
         body: JSON.stringify({ login, otp }),
       });
 
