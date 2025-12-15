@@ -8,6 +8,8 @@ function Crac() {
   const [formData, setFormData] = useState({fname: "",uname: "",email: "",password: "",cpassword: "", otp:""});
   const [otp,setotp] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  
   const navigate = useNavigate();
   const hndchng = (e) => {
     setFormData(prev => ({
