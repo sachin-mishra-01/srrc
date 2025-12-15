@@ -249,7 +249,7 @@ function Fp() {
     <div className="flex flex-col gap-3 items-center w-[75%] text-lg font-medium">
       {/* username/email input - always visible */}
       <label className="flex justify-between w-full">
-        Email or Username:
+        Email or Username :
         <input
           className="text-black"
           type="text"
