@@ -38,7 +38,7 @@ function Mnpg() {
 
           <p className="text-lg max-w-md text-center mb-8 max-xl:text-xs max-xl:mb-2">
             Exchange your skills, sell digital products, or collaborate with
-            others worldwide. Grow your network and unlock new opportunities.
+            others worldwide. Grow your network and unlock new opportunities..
           </p>
 
         </div>
