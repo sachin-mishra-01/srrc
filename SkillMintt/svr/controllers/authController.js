@@ -9,16 +9,24 @@ import { sndml } from "../utils/sendmail.js";
 // Signup
 export const signup = async (req, res) => {
   try {
-    const {fullname, username, email, password } = req.body;
+    const { fullname, username, email, password } = req.body;
 
-    // Check if user exists
-    const userExists = await User.findOne({ email });
-    if (userExists) return res.status(400).json({ message: "User already exists" });
+    //  Check BOTH username & email
+    const existingUser = await User.findOne({
+      $or: [{ email }, { username }]
+    });
 
-    // Hash password
+    if (existingUser) {
+      if (existingUser.email === email) {
+        return res.status(409).json({ message: "Email already registered" });
+      }
+      if (existingUser.username === username) {
+        return res.status(409).json({ message: "Username already taken" });
+      }
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create user
     const user = await User.create({
       fullname,
       username,
@@ -26,26 +34,37 @@ export const signup = async (req, res) => {
       password: hashedPassword
     });
 
-    // Send JWT
-  const tkn = gentkn(user._id , user.username);
+    const tkn = gentkn(user._id, user.username);
 
-   res.cookie("tkn", tkn, {
-  httpOnly: true,
-  secure: true,        
-  sameSite: "none",    
-  maxAge: 24 * 60 * 60 * 1000,
-});
-
+    res.cookie("tkn", tkn, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
 
     res.status(201).json({
       message: "Account created successfully",
       username: user.username,
-      tkn,
     });
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+
+    //  FINAL SAFETY (race condition)
+    if (err.code === 11000) {
+      if (err.keyPattern?.username) {
+        return res.status(409).json({ message: "Username already taken" });
+      }
+      if (err.keyPattern?.email) {
+        return res.status(409).json({ message: "Email already registered" });
+      }
+    }
+
+    console.error("Signup error:", err);
+    res.status(500).json({ message: "Server error" });
   }
 };
+
 
 // Login
 export const login = async (req, res) => {
