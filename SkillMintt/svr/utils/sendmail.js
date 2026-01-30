@@ -1,20 +1,24 @@
 // utils/sendOtp.js
 import transporter from "../config/ndml.js";
 
-
-export async function sndml (to , sub , txt) {
+export async function sndml(to, sub, txt) {
   const mailOptions = {
-    from: `"SkillMintt..." <${process.env.MAIL_USER}>`,
+    from: process.env.EMAIL_FROM || process.env.MAIL_USER,
     to,
     subject: sub,
     text: txt,
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log("✅ OTP Email sent!");
-  } catch (error) {
-    console.error("❌ Email sending failed:", error);
-  }
-};
+    const info = await transporter.sendMail(mailOptions);
 
+   
+    return { ok: true, messageId: info.messageId };
+  } catch (error) {
+  
+    console.log("MAIL_FAILED_CODE:", error?.code || "NO_CODE");
+
+  
+    throw error;
+  }
+}
