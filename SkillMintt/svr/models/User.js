@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   email:    { type: String, required: true, unique: true },
   password: { type: String, required: true },
   skills: [{ type: mongoose.Schema.Types.ObjectId, ref: "Skill" }],
-  profilePhoto: { type: String, default: "https://cdn-icons-png.flaticon.com/512/149/149071.png" },  // cloudinary URL or empty string
+  profilePhoto: { type: String, default: "https://cdn-icons-png.flaticon.com/512/149/149071.png" },  
   
   bio: { type: String, default: "" },
   needs: { type: String, default: "" },
@@ -21,20 +21,19 @@ const userSchema = new mongoose.Schema({
    },
 }, { timestamps: true });
 
-// userSchema.virtual for skills
+
 
 
 
 userSchema.pre("save", async function(next) {
- /*  if (this.isNew) {  // Only true when creating a new document
-    //console.log("okkk");
+   if (this.isNew) { 
     await sndml(
       this.email,
       "Account Creation Notification",
       "Welcome to SkillMintt..."
     );
-  }*/
-  console.log("okkk");
+  }
+  
   next();
 });
 
