@@ -29,21 +29,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-/* ✅ Password hash (agar tum already kar rahe ho to keep it)
-   If not using, you can remove this block.
-*/
-userSchema.pre("save", async function (next) {
-  try {
-    if (!this.isModified("password")) return next();
 
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-
-    next();
-  } catch (err) {
-    next(err);
-  }
-});
 
 
 userSchema.post("save", function (doc) {
@@ -52,8 +38,8 @@ userSchema.post("save", function (doc) {
 
  
   sndml(doc.email, "Account Creation Notification", "Welcome to SkillMintt...")
-    .then(() => console.log("✅ Welcome email sent to:", doc.email))
-    .catch((err) => console.log("❌ Welcome email failed:", err.message));
+    .then(() => console.log("✅ Welcome email sent to user "))
+    .catch((err) => console.log("Sorry for ❌ Welcome email failed to user"));
 });
 
 
