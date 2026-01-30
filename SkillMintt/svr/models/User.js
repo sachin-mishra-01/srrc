@@ -26,14 +26,15 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.pre("save", async function(next) {
-   if (this.isNew) {  // Only true when creating a new document
+ /*  if (this.isNew) {  // Only true when creating a new document
     //console.log("okkk");
     await sndml(
       this.email,
       "Account Creation Notification",
       "Welcome to SkillMintt..."
     );
-  }
+  }*/
+  console.log("okkk");
   next();
 });
 
