@@ -218,7 +218,7 @@ export default function EditProfile() {
               }}
               className="w-full border px-3 py-2 rounded-md"
             />
-            <p className="text-xs text-gray-500 mt-1">{bio.length}/500 characters</p>
+            <p className="text-xs text-gray-500 mt-1">{bio.length}/50 characters</p>
           </div>
 
           {/* Needs */}
