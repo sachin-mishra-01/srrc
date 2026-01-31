@@ -6,7 +6,18 @@ export default function Profile() {
   const { username } = useParams();
   const navigate = useNavigate();
   const { un, pfdata, setPfData } = useData();
+  const email = pfdata?.email || "";
 
+  let line1 = email;
+   let line2 = "";
+
+   if (email.length > 150) {
+  line1 = email.slice(0, 75);
+  line2 = "... " + email.slice(-72);
+  } else if (email.length > 75) {
+  line1 = email.slice(0, 75);
+  line2 = email.slice(75);
+    }
   const handlePhotoChange = () => {
     pfdata.username ? navigate(`/${pfdata.username}/chp`) : navigate(-1);
   };
@@ -29,7 +40,21 @@ export default function Profile() {
           <div className="flex flex-col justify-center gap-1 flex-grow w-2/3 text-sm">
             <h1 className="text-lg font-bold">{pfdata?.username || "Loading"}</h1>
             <p className="text-gray-600">{pfdata?.fullname || "Loading"}</p>
-            <p className="text-gray-700">{pfdata?.email || "Loading"}</p>
+           <p className="text-gray-700 break-all">
+    {pfdata?.email ? (
+      <>
+        {line1}
+        {line2 && (
+          <>
+            <br />
+            {line2}
+          </>
+        )}
+      </>
+    ) : (
+      "Loading"
+    )}
+  </p>
             <p className="text-xs text-gray-500">{pfdata?.bio || "Loading"}</p>
           </div>
 
