@@ -179,7 +179,7 @@ export default function EditProfile() {
 
           {/* Username */}
           <div className="flex flex-col">
-            <label className="text-sm font-medium mb-1">Username</label>
+            <label className="text-sm font-medium mb-1">User Name</label>
             <input
               type="text"
               placeholder="Username"
