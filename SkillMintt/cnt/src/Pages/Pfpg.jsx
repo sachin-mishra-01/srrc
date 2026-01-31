@@ -11,12 +11,12 @@ export default function Profile() {
   let line1 = email;
    let line2 = "";
 
-   if (email.length > 150) {
-  line1 = email.slice(0, 75);
-  line2 = "... " + email.slice(-72);
-  } else if (email.length > 75) {
-  line1 = email.slice(0, 75);
-  line2 = email.slice(75);
+   if (email.length > 120) {
+  line1 = email.slice(0, 60);
+  line2 = "... " + email.slice(-57);
+  } else if (email.length > 60) {
+  line1 = email.slice(0, 60);
+  line2 = email.slice(60);
     }
   const handlePhotoChange = () => {
     pfdata.username ? navigate(`/${pfdata.username}/chp`) : navigate(-1);
