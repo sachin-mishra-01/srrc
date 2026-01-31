@@ -71,8 +71,8 @@ function Crac() {
   };
     return (
         <form onSubmit={handleSubmit} className=" text-lg max-xl:text-md flex flex-col gap-3 justify-between items-center font-medium  w-[75%] h-full ">
-        <label className="flex  justify-between w-full "> Full Name : <input className="text-black " type="text" name="fname"  placeholder=" Full name" value={formData.fname} onChange={hndchng} required/> </label>
-       <label className="flex  justify-between w-full ">  User Name :  <input className="text-black "  type="text" name="uname" placeholder="username" value={formData.uname} onChange={hndchng} required/>  </label>
+        <label className="flex  justify-between w-full "> Full Name : <input className="text-black " type="text" name="fname"  placeholder=" Full name" value={formData.fname} onChange={hndchng} maxLength={50} required/> </label>
+       <label className="flex  justify-between w-full ">  User Name :  <input className="text-black "  type="text" name="uname" placeholder="username" value={formData.uname} onChange={hndchng} maxLength={50} required/>   </label>
         <label className="flex  justify-between w-full ">email : <input className="text-black "  type="email" name="email" placeholder=" email" value={formData.email} onChange={hndchng} required /> </label>
        <label className="flex  justify-between w-full "> Password :  <input className="text-black "  type="password" name="password" placeholder="Password" value={formData.password} onChange={hndchng} required /> </label> 
        <label className="flex  justify-between w-full "> Confirm Password : <input className="text-black "  type="password" name="cpassword" placeholder="confirm Password" value={formData.cpassword} onChange={hndchng} required /> </label> 
