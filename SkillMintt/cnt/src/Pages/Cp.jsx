@@ -184,7 +184,9 @@ export default function EditProfile() {
               type="text"
               placeholder="Username"
               value={userNameInput}
-              onChange={(e) => setUserNameInput(e.target.value)}
+              onChange={(e) => {
+               if (e.target.value.length <= 50) setUserNameInput(e.target.value);
+              }}
               className="w-full border px-3 py-2 rounded-md"
               required
             />
@@ -197,7 +199,9 @@ export default function EditProfile() {
               type="text"
               placeholder="Full Name"
               value={fullname}
-              onChange={(e) => setFullname(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value.length <= 50) setFullname(e.target.value);
+              }}
               className="w-full border px-3 py-2 rounded-md"
               required
             />
@@ -210,7 +214,7 @@ export default function EditProfile() {
               placeholder="Bio"
               value={bio}
               onChange={(e) => {
-                if (e.target.value.length <= 500) setBio(e.target.value);
+                if (e.target.value.length <= 50) setBio(e.target.value);
               }}
               className="w-full border px-3 py-2 rounded-md"
             />
